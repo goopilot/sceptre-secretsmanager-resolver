@@ -26,7 +26,11 @@ class SecretsManagerResolver(Resolver):
         if 'JsonKey' in self.argument:
             json_key = secret_params['JsonKey']
             del secret_params['JsonKey']
-
+            
+        if 'Region' in self.argument:
+            region = secret_params['Region']
+            del secret_params['Region']
+            
         if self.argument:
             value = self._get_secret_value(secret_params, profile, region)
 
